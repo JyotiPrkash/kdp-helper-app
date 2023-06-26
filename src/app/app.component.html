@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="text-container" #divToConvert>
+    <ng-container *ngFor="let firstNumber of lineOne;let j = index;">
+      <div class="outer-block">
+        <div style="color: darkgray;">{{j+1}}. </div>
+        <div class="block">
+          <div class="line-one">
+            <!-- <span class="symbol">&nbsp;&nbsp;&nbsp;</span> -->
+            <span>{{firstNumber}}</span>
+          </div>
+  
+          <div class="line-two">
+            <ng-container *ngIf="j%2 == 0">
+              {{logicList[0]}}
+            </ng-container>
+            <ng-container *ngIf="j%2 != 0">
+              {{logicList[1]}}
+            </ng-container>
+            <span>&nbsp;{{lineTwo[j]}}</span>
+          </div>
+  
+          <div class="line-three">
+            
+          </div>
+          
+        </div>
+      </div>
+      
+      
+    </ng-container>
+  </div>
+  <div>&nbsp;&nbsp;&nbsp;</div>
+  <div class="action-container">
+    <div class="action-body">
+      <div>
+        <span>Min Range : </span>
+        <input type="text" [(ngModel)]="minRange" placeholder="minRange">
+      </div>
+      <div>
+        <span>Max Range: </span>
+        <input type="text" [(ngModel)]="maxRange" placeholder="maxRange">
+      </div>
+      <div>
+        <div>
+          <span>logicList: </span>
+          <input type="text" [(ngModel)]="logicList" placeholder="logicList">
+        </div>
+        <div>
+          <input name="symbol-list" id="plusplus" type="radio" (click)="logicSelector('++', 'addsub')" value="++">
+          <label for="plusplus">++</label><br>
+          <input name="symbol-list" id="minusminus" type="radio" (click)="logicSelector('--', 'addsub')" value="--">
+          <label for="minusminus">--</label><br>
+          <input name="symbol-list" id="plusminus" type="radio" (click)="logicSelector('+-', 'addsub')" value="+-">
+          <label for="plusminus">+_</label><br>
+          <input name="symbol-list" id="minusplus" type="radio" (click)="logicSelector('-+', 'addsub')" value="-+">
+          <label for="minusplus">-+</label><br>
+        </div>
+
+        <div>
+          <input name="symbol-list" id="multiplymultiply" type="radio" (click)="logicSelector('**', 'multiply')" value="**">
+          <label for="multiplymultiply">**</label><br>
+          <input name="symbol-list" id="dividedevide" type="radio" (click)="logicSelector('//', 'divide')" value="//">
+          <label for="dividedevide">//</label><br>
+
+        </div>
+        
+        
+      </div>
+      <div>
+        <span>Page Count: </span>
+        <input type="text" [(ngModel)]="pageCount" placeholder="pageCount">
+        <input type="button" value="Add page" (click)="addPageCount()">
+      </div>
+      
+    </div>
+    
+    <div class="action-body">
+      <input type="button" value="Generate Png" (click)="generateImg()">
+      <input type="button" value="Download Png" (click)="convertToImage()">
+    </div>
+    
+  </div>
+</div>
